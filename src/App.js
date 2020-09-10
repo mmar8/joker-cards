@@ -1,8 +1,14 @@
 import React from 'react';
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron, Card, CardBody, CardTitle, Button, Fade, CardText } from 'reactstrap';
 import './App.css';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { fadeIn: false };
+    this.toggle = this.toggle.bind(this);
+  }
+
   render() {
     return (
       <div>
@@ -14,7 +20,21 @@ export default class App extends React.Component {
           <p className="lead">
           </p>
         </Jumbotron>
+        <Card>
+         <CardBody>
+           <CardTitle>Card title</CardTitle>
+           <Button color="primary" onClick={this.toggle}>Magic</Button>
+           <Fade in={this.state.fadeIn} className='my-2'>
+              <CardText>Fading text</CardText>
+            </Fade>
+         </CardBody>
+        </Card>
       </div>
     );
+  }
+  toggle() {
+    this.setState({
+      fadeIn: !this.state.fadeIn
+    });
   }
 };
