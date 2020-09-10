@@ -9,19 +9,23 @@ export default class Joke extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
+
   render() {
+    
+    let { setup, punchline } = this.props.humor;
     return (
       <div>
         <Card>
          <CardBody>
-           <CardTitle>What time did the man go to the dentist?</CardTitle>
+           <CardTitle>{setup}</CardTitle>
            <Button color="primary" onClick={this.toggle}>Magic</Button>
            <Fade in={this.state.fadeIn} className='my-2'>
-              <CardText>Tooth hurt-y</CardText>
+              <CardText>{punchline}</CardText>
             </Fade>
          </CardBody>
         </Card>
       </div>
+
     );
   }
   toggle() {
